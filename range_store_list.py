@@ -4,11 +4,17 @@ class RangeList:
         self.nodes = []
 
     def findNodes(self, point):
-        pass
+        return [node for node in self.nodes if node['start']<=point<=node['end']]
             
 
     def insertRange(self, start, end, data):
-        pass
+        node = {
+            'start': start,
+            'end': end,
+            'data': data
+        }
+        self.nodes.append(node)
+        return node
 
     def _printNodes(self):
         print(self.nodes)
