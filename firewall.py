@@ -1,23 +1,24 @@
-from utils import parse_rule_line
+from utils import parseRuleLine
 from rules_manager import RulesManager
 
 class Firewall:
     
     def __init__(self, filepath):
         self.filepath = filepath
-        self.rules_manager = RulesManager()
-        self._load_rules_from_file(self.filepath)
+        self.rulesManager = RulesManager()
+        self._loadRulesFromFile(self.filepath)
         
 
-    def _load_rules_from_file(self, filepath):
+    def _loadRulesFromFile(self, filepath):
         with open(self.filepath, 'r') as f:
             for line in f.readlines():
-                self._load_rule(line)
+                self._loadRule(line)
     
-    def _load_rule(self, line):
-        (dir, typ, ipstart, ipend, pstart, pend) = parse_rule_line(line)
-        self.rules_manager.add_rule(True, dir, typ, ipstart, ipend, pstart, pend)
+    def _loadRule(self, line):
+        (dir, typ, ipstart, ipend, pstart, pend) = parseRuleLine(line)
+        self.rulesManager.addRule(True, dir, typ, ipstart, ipend, pstart, pend)
 
 
-    def is_point_valid(self, point):
-        pass
+    def isAllowed(self, line):
+        (dir, typ, ip, _ ,  port, _ ) = parseRuleLine(',')
+        return self.rules.checkRule(dir, typ, ip, port)

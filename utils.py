@@ -1,8 +1,8 @@
-def convert_ip_to_number(ipstr):
+def convertIpToNumber(ipstr):
     return sum([int(part) * (256**(3-indx)) for indx, part in enumerate(ipstr.split('.'))])
 
 
-def parse_rule_line(rule):
+def parseRuleLine(rule):
     dir, typ, prange, iprange = rule.split(',')
     pstart, pend = prange, prange
     if '-' in prange:
@@ -11,8 +11,8 @@ def parse_rule_line(rule):
     
     ipstart, ipend = None, None
     if '-' in iprange:
-        ipstart, ipend = map(convert_ip_to_number, iprange.split('-'))
+        ipstart, ipend = map(convertIpToNumber, iprange.split('-'))
     else:
-        convertedIp = convert_ip_to_number(iprange)
+        convertedIp = convertIpToNumber(iprange)
         ipstart, ipend = convertedIp, convertedIp
     return (dir, typ, ipstart, ipend, pstart, pend)
