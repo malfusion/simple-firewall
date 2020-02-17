@@ -13,3 +13,4 @@ python tests.py
 - However we cannot include the port range into this, because ip-port combination ranges need not be contiguous and there will be multiple disconnections. Eg: 10.1.1.1-10.1.1.5 35000-36000: The ports 35000-36000 is contiguous for the first ip in the ip range, and then after a large gap, we will encounter the next IP's 35000-36000. So we do not include the port together with the ip during conversion.
 
 
+
