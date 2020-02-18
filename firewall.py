@@ -20,5 +20,5 @@ class Firewall:
 
 
     def isAllowed(self, line):
-        (dir, typ, ip, _ ,  port, _ ) = parseRuleLine(',')
-        return self.rules.checkRule(dir, typ, ip, port)
+        (dir, typ, ip, _ ,  port, _ ) = parseRuleLine(line)
+        return self.rulesManager.checkRule(dir, typ, ip, port)
