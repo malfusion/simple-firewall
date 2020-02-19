@@ -1,4 +1,5 @@
 from range_store_list import RangeList
+from range_store_segmenttree import SegmentTree
 
 class RulesManager:
     """RulesManager object stores the rules and abstracts away the underlying datastructure that is used.
